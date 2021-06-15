@@ -1,0 +1,5 @@
+<ScrollView horizontal >
+   ...
+</ScrollView>
+
+horizontal => nếu đứng một mình thì mặc định true. Hoặc bất cứ prop nào nằm trong 1 thẻ mà theo sau nó không có =giá_trị thì mặc định là boolean => true

@@ -1,21 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import Drawer from "./routes/Drawer";
+import {
+  DancingScript_400Regular,
+  DancingScript_500Medium,
+  DancingScript_600SemiBold,
+  DancingScript_700Bold,
+} from "@expo-google-fonts/dancing-script";
+import { useFonts } from "expo-font";
+import AppLoading from "expo-app-loading";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  let [fontsLoaded, error] = useFonts({
+    DancingScript_400Regular,
+    DancingScript_500Medium,
+    DancingScript_600SemiBold,
+    DancingScript_700Bold,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
+  return <Drawer />;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const styles = StyleSheet.create({});
