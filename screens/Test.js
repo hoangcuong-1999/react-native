@@ -7,59 +7,56 @@ import {
   RefreshControl,
   FlatList,
   SectionList,
+  Alert,
+  TouchableOpacity,
+  ToastAndroid,
 } from "react-native";
 import { globalStyles } from "../global/globalStyles";
 
 const Test = () => {
-  const DATA = [
-    {
-      title: "Title 1",
-      data: ["Item 1-1", "Item 1-2", "Item 1-3"],
-    },
-    {
-      title: "Title 2",
-      data: ["Item 2-1", "Item 2-2"],
-    },
-    {
-      title: "Title 3",
-      data: ["Item 3-1"],
-    },
-  ];
+  const onPress = () => {
+    // Alert.alert(
+    //   "Warning",
+    //   "Text input must be over 3 chars",
+    //   [
+    //     {
+    //       text: "Do not show again",
+    //       onPress: () => console.warn("Do not show again"),
+    //     },
+    //     { text: "OK", onPress: () => console.warn("OK pressed!") },
+    //   ],
+    //   { cancelable: true }
+    // );
+    ToastAndroid.showWithGravity(
+      "Tada! here i am !",
+      ToastAndroid.LONG,
+      ToastAndroid.TOP
+    );
+  };
 
   return (
-    <SectionList
-      keyExtractor={(item, index) => index.toString()}
-      sections={DATA}
-      renderSectionHeader={({ section }) => (
-        <View style={styles.item}>
-          <Text style={styles.text}>{section.title}</Text>
-        </View>
-      )}
-      renderItem={({ item }) => <Text style={styles.darkColor}>{item}</Text>}
-    />
+    <View style={[globalStyles.container, { alignItems: "center" }]}>
+      <TouchableOpacity style={styles.button} onPress={onPress}>
+        <Text style={styles.text}>Press Me</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
 export default Test;
 
 const styles = StyleSheet.create({
-  body: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-  item: {
-    backgroundColor: "purple",
+  button: {
+    width: 150,
+    height: 50,
+    backgroundColor: "#000000",
     justifyContent: "center",
     alignItems: "center",
-    margin: 10,
-    padding: 10,
   },
   text: {
-    fontSize: 35,
-    color: "#fff",
-  },
-  darkColor: {
-    color: "#333",
-    fontSize: 35,
+    color: "#ffffff",
+    fontSize: 18,
+    textTransform: "uppercase",
+    fontWeight: "bold",
   },
 });
